@@ -1,0 +1,13 @@
+<div class="annotation_cloud" *ngIf="annotationObject" [style]="getMyPositionStyles()" (mousedown)="onMouseDown($event);">
+	<ng-container *ngIf="annotationObject.type === AnnotationType.Image">
+		<img [src]="annotationObject.getImageParameters().imageData" />
+	</ng-container>
+	<ng-container *ngIf="annotationObject.type === AnnotationType.Text">
+		<p>{{annotationObject.getTextParameters().text}}</p>
+	</ng-container>
+	<div class="popup_options">
+		<mat-icon color="warn" (click)="onDeleteClick($event);">delete</mat-icon>
+		<mat-icon (click)="onIncreaseSizeClick($event);">zoom_in</mat-icon>
+		<mat-icon (click)="onDecreaseSizeClick($event);">zoom_out</mat-icon>
+	</div>
+</div>

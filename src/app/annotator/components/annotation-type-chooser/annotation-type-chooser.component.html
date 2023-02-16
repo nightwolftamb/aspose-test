@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Select annotation type</h1>
+<mat-dialog-content>
+	<input #ImageSelectInputDialog accept="image/*" type="file" style="display: none;" (change)="imageSelected($event);"/>
+	<button mat-flat-button color="accent" class="full-width" (click)="selectType(AnnotationType.Image); ImageSelectInputDialog.click();">Image Annotation</button>
+	<br />
+	<br />
+	<button mat-flat-button color="accent" class="full-width" (click)="selectType(AnnotationType.Text);">Text Annotation</button>
+	<ng-container *ngIf="selectedType === 'text'">
+		<br />
+		<mat-form-field class="full-width">
+			<input matInput [(ngModel)]="textForAnnotation">
+			<mat-label>
+				Type annotation text here
+			</mat-label>
+		</mat-form-field>
+		<button mat-stroked-button color="accent" (click)="textSelected();">Add Annotation</button>
+	</ng-container>
+</mat-dialog-content>
+

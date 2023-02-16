@@ -1,0 +1,28 @@
+<p *ngIf="errorDescription.errorId > 0">{{errorDescription.getErrorDescription()}}</p>
+<ng-container *ngIf="errorDescription.errorId == 0">
+	<mat-progress-spinner *ngIf="!currentDocument"></mat-progress-spinner>
+	<ng-container *ngIf="currentDocument">
+		<div class="header">
+				<mat-label>Scale:</mat-label>
+				<mat-icon (click)="zoomIn();">zoom_in</mat-icon>
+				<mat-icon (click)="zoomOut();">zoom_out</mat-icon>
+				<mat-divider style="width: 50px;"></mat-divider>
+				<button mat-flat-button color="accent" (click)="onSaveDocumentClick();">Save document</button>
+				<mat-divider style="width: 50px;"></mat-divider>
+		</div>
+		<div class="editor">
+			<div class="zoomer" [style]="getZoomerStyles()">
+				<app-page
+						*ngFor="let page of currentDocument.pages"
+						[pageObject]="page"
+				>
+
+				</app-page>
+			</div>
+
+		</div>
+
+
+		<span class="help_line">Double click on document to add annotation</span>
+	</ng-container>
+</ng-container>

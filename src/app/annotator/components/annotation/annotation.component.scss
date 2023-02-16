@@ -1,0 +1,33 @@
+.annotation_cloud {
+  padding: 5px;
+  border-radius: 10px;
+  min-width: 100px;
+  background-color: #ffffff;
+  border: 1px solid #444444;
+  transform-origin: top left;
+  position: absolute;
+  cursor: grab;
+
+  .popup_options {
+    background-color: rgba(255, 255, 255, 0.8);
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+    mat-icon {
+      cursor: pointer;
+    }
+
+  }
+}
+
+.annotation_cloud:hover {
+  .popup_options {
+    visibility: visible;
+  }
+}
+
+.annotation_cloud:active {
+  cursor: grabbing;
+}
